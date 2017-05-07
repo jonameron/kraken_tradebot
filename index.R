@@ -7,9 +7,8 @@ library(plotly)
 source("helper_fn.R")
 
 #set keys
-api_key <- 'UECT8Bx30OGmk8XqPaQl2806cFz6sai+9s9HToqA6A0NPk9oChEsYhLv'
-private_key <- 'A7le44/H45nL4lKsaOOI5J2A7lzex7+uIuTqIpe7gQagUysvNOq2A3jaDF3ybjRYRlFLNh44WrGX9/rdZkE9qg=='
-as
+api_key <- 'xy'
+private_key <- 'xy'
 #set keys -- console input for deployment
 # ask_keys <- function(){
 #   x <- readline("Please set api_key ( print \"public\" for use of public functions only: ")  
