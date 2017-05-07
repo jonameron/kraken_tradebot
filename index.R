@@ -21,7 +21,8 @@ ifelse(x=="",
           return(c(x,y))
 }
 a <- ask_keys()
-source("trades.R")
+source("getTrades.R")
+source("setTrades.R")
 source("plots.R")
 p
 

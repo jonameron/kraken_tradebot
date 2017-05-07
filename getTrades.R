@@ -1,4 +1,5 @@
-#this script downloads the latest trade data
+#this script downloads the latest trade data and stores it in variable "trades", 
+#pre-requisite: at least one entry in "download_log.csv"
 library(curl)
 library(jsonlite)
 library(Rbitcoin)
@@ -12,7 +13,7 @@ api_key <- 'xy' #can be stored in file
 private_key <- 'xy' #can be stored in file
 
 #get last download time
-r <- read.csv(file = "./Data/download_times.csv",sep = ";",header = FALSE,col.names = c("id","last"))
+r <- read.csv(file = "./Data/download_log.csv",sep = ";",header = FALSE,col.names = c("id","last"))
 snce <- as.character(tail(r$last,n = 1))
 #tradeSet <- kraken_PublicFn("Trades?pair=XETHZEUR&since=1494094742768336630")
 #tradeSet <- kraken_PublicFn(paste("Trades?pair=XETHZEUR&since=",snce,sep=""))
@@ -38,10 +39,3 @@ period <- function(t="s"){
          m = p/60,
          s = p)
 }
-
-#write latest trade data data to file
-write.table(x = trades,file="./Data/trades_history.csv",append = TRUE,col.names = FALSE,sep = ";",dec = ",")
-
-#write last query timestamp into file
-prev_timestamp <- as.numeric(trades$timestamp[length(trades$timestamp)])
-write.table(as.character(tradeSet$last),file = "./Data/download_times.csv",append = TRUE,col.names = FALSE,sep = ";",dec = ",")
