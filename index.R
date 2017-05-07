@@ -7,20 +7,21 @@ library(plotly)
 source("helper_fn.R")
 
 #set keys
-api_key <- 'xy'
-private_key <- 'xy'
+api_key <- 'xy' #can be stored in file
+private_key <- 'xy' #can be stored in file
 #set keys -- console input for deployment
-# ask_keys <- function(){
-#   x <- readline("Please set api_key ( print \"public\" for use of public functions only: ")  
-#   ifelse(x=="public",
-#          yes = 
-#            {print("public mode enabled")
-#            return("")},
-#          no = y <- readline("Please set private_key: ")
-#          )
-#          return(c(x,y))
-# }
-# a <- ask_keys()
+ask_keys <- function(){
+x <- readline("Please set api_key ( print \"public\" for use of public functions only: ")  
+ifelse(x=="public",
+         yes = {
+           print("public mode enabled")
+           return("")},
+          no = y <- readline("Please set private_key: ")
+            )
+          return(c(x,y))
+}
+a <- ask_keys()
+
 
 #get last download time
 r <- read.csv(file = "../R_TradeBot_Kraken/Data/download_times.csv",sep = ";",header = FALSE,col.names = c("id","last"))
