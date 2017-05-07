@@ -68,3 +68,11 @@ write.table(x = trades,file="./Data/trades_history.csv",append = TRUE,col.names 
 prev_timestamp <- as.numeric(trades$timestamp[length(trades$timestamp)])
 write.table(tradeSet$last,file = "./Data/download_times.csv",append = TRUE,col.names = FALSE,sep = ";",dec = ",")
 
+#returns slope of tail model by fraction, 5 for example for 5th-last quantile
+tailslope <- function(quantile) #enter 5 to see fifth quantile
+      {tailNo <- as.integer(length(trades$FX)/quantile)
+      tail <- tail(x=trades,n=tailNo)
+      model <- lm(tail$FX ~ tail$timestamp)
+      return(model$coefficients[2])
+      }
+p
