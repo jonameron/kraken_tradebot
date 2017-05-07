@@ -11,7 +11,7 @@ api_key <- 'xy' #can be stored in file
 private_key <- 'xy' #can be stored in file
 #set keys -- console input for deployment
 ask_keys <- function(){
-x <- readline("Please set api_key ( print \"public\" for use of public functions only: ")  
+x <- readline("Please set api_key ( print \"public\" for use of public functions only): ")  
 ifelse(x=="public",
          yes = {
            print("public mode enabled")
