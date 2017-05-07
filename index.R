@@ -24,7 +24,7 @@ a <- ask_keys()
 
 
 #get last download time
-r <- read.csv(file = "../R_TradeBot_Kraken/Data/download_times.csv",sep = ";",header = FALSE,col.names = c("id","last"))
+r <- read.csv(file = "./Data/download_times.csv",sep = ";",header = FALSE,col.names = c("id","last"))
 snce <- as.character(tail(r$last,n = 1))
 #tradeSet <- kraken_PublicFn("Trades?pair=XETHZEUR&since=1494094742768336630")
 #tradeSet <- kraken_PublicFn(paste("Trades?pair=XETHZEUR&since=",snce,sep=""))
@@ -61,10 +61,10 @@ p <- plot_ly( x = (trades$timestamp-first_timestamp), y = trades$FX, name = 'FX'
 
 
 #writing data to file
-write.table(x = trades,file="../R_TradeBot_Kraken/Data/trades_history.csv",append = TRUE,col.names = FALSE,sep = ";",dec = ",")
+write.table(x = trades,file="./Data/trades_history.csv",append = TRUE,col.names = FALSE,sep = ";",dec = ",")
 
 #document last
 #document last query
 prev_timestamp <- as.numeric(trades$timestamp[length(trades$timestamp)])
-write.table(tradeSet$last,file = "../R_TradeBot_Kraken/Data/download_times.csv",append = TRUE,col.names = FALSE,sep = ";",dec = ",")
+write.table(tradeSet$last,file = "./Data/download_times.csv",append = TRUE,col.names = FALSE,sep = ";",dec = ",")
 
