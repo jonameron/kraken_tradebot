@@ -11,8 +11,8 @@ api_key <- 'xy' #can be stored in file
 private_key <- 'xy' #can be stored in file
 #set keys -- console input for deployment
 ask_keys <- function(){
-x <- readline("Please set api_key ( print \"public\" for use of public functions only): ")  
-ifelse(x=="public",
+x <- readline("Please set api_key ( keep empty for use of public functions only ): ")  
+ifelse(x=="",
          yes = {
            print("public mode enabled")
            return("")},
@@ -57,7 +57,7 @@ slope <- linear_model$coefficients[2]
 ifelse(test = slope>0,yes = print("... positive slope..."),no=print("... negative slope..."))
 
 p <- plot_ly( x = (trades$timestamp-first_timestamp), y = trades$FX, name = 'FX', type = 'scatter', mode = 'lines')%>%
-  add_trace(x=(trades$timestamp-first_timestamp),y=trades$lm,name =paste('regr , s=',format(linear_model$coefficients[2],digits=3),sep=""),type ='line',evaluation = FALSE)
+  add_trace(x=(trades$timestamp-first_timestamp),y=trades$lm,name =paste('regr , s=',format(linear_model$coefficients[2],digits=3),sep=""),type ='scatter',evaluation = FALSE)
 
 
 #writing data to file
